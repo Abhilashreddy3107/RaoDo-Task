@@ -11,13 +11,13 @@ function calculateMonthlyUsers(users) {
         const loggedOutYearMonth = `${loggedOutDate.getFullYear()}-${loggedOutDate.getMonth() + 1}`;
         const lastOpenedYearMonth = `${lastOpenedDate.getFullYear()}-${lastOpenedDate.getMonth() + 1}`;
 
-        // Track logged-in users per month
+        // For Tracking logged-in users per month
         if (!monthlyLoggedInUsers[loggedInYearMonth]) {
             monthlyLoggedInUsers[loggedInYearMonth] = new Set();
         }
         monthlyLoggedInUsers[loggedInYearMonth].add(user.userId);
 
-        // If logged out is in a different month, track across months
+        // If the user log out is in a different month, and is tracked across months
         if (loggedOutYearMonth !== loggedInYearMonth) {
             let tempDate = new Date(loggedInDate);
             while (tempDate <= loggedOutDate) {
@@ -30,7 +30,7 @@ function calculateMonthlyUsers(users) {
             }
         }
 
-        // Track active users per month
+        // Tracking active users each month
         if (!monthlyActiveUsers[lastOpenedYearMonth]) {
             monthlyActiveUsers[lastOpenedYearMonth] = new Set();
         }
@@ -48,7 +48,7 @@ function calculateMonthlyUsers(users) {
     return monthlyMetrics;
 }
 
-// Example usage
+// Example: 
 const users = [
     {
         deviceId: 'device1',
